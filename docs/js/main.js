@@ -3,7 +3,8 @@ var refreshRate = 60000; // 1 minute
 var url = "http://wwc.instacam.com/instacamimg/STNMN/STNMN_l.jpg";
 var oldImg = null;
 var newImg = null;
-var updater = null;
+var imgUpdater = null;
+var timeUpdater = null;
 
 function createImg() {
 	var img = document.createElement("img");
@@ -40,21 +41,34 @@ function updateImg() {
 	})
 
 	// Add the new image to the body
-	document.body.appendChild(newImg);
+	document.getElementById("images").appendChild(newImg);
 	console.log("updating image");
 }
 
 function startUpdating() {
-	updater = setInterval(() => {
+	imgUpdater = setInterval(() => {
 		updateImg();
 	}, refreshRate);
 }
 
 function stopUpdating () {
-	clearInterval(updater);
+	clearInterval(imgUpdater);
+}
+
+function startTime() {
+	timeUpdater = setInterval(() => {
+		const time = new Date();
+		document.querySelector("#clock .hour").innerText = time.getHours();
+		document.querySelector("#clock .minute").innerText = time.getMinutes();
+	}, 1000);
+}
+
+function stopTime() {
+	clearInterval(timeUpdater);
 }
 
 document.addEventListener("DOMContentLoaded", function() {
 	updateImg();
 	startUpdating();
+	startTime();
 });

@@ -6,6 +6,11 @@ html, body {
     overflow: hidden;
 }
 
+#images {
+    width: 100%;
+    height: 100%;
+}
+
 img {
     width: 100%;
     height: 100%;
@@ -34,4 +39,19 @@ img {
     body {
         background: #CCC;
     }
+}
+
+#clock {
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
+    padding: 0.5em;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    z-index: 900001;
+    font-family: sans-serif;
+    font-size: 2em;
+}
+#clock .hour {
+    font-weight: bold;
 }
