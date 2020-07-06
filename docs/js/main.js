@@ -68,7 +68,7 @@ function stopTime() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
+	startTime();
 	updateImg();
 	startUpdating();
-	startTime();
 });
