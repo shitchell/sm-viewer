@@ -41,6 +41,7 @@ function updateImg() {
 
 	// Add the new image to the body
 	document.body.appendChild(newImg);
+	console.log("updating image");
 }
 
 function startUpdating() {
