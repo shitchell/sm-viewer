@@ -60,8 +60,16 @@ function stopUpdating () {
 function startTime() {
 	timeUpdater = setInterval(() => {
 		const time = new Date();
-		document.querySelector("#clock .hour").innerText = time.getHours();
-		document.querySelector("#clock .minute").innerText = time.getMinutes();
+		var hours = time.getHours();
+		if (hours < 10) {
+			hours = '0' + hours;
+		}
+		var minutes = time.getMinutes();
+		if (minutes < 10) {
+			minutes = '0' + minutes;
+		}
+		document.querySelector("#clock .hour").innerText = hours;
+		document.querySelector("#clock .minute").innerText = minutes;
 	}, 1000);
 }
 
