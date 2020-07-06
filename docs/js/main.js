@@ -12,21 +12,7 @@ function createImg() {
 	return img;
 }
 
-async function updateImg() {
-	// Replace the current old image with a new invisible image
-	oldImg = newImg;
-	newImg = createImg();
-
-	// Add the new image to the body
-	document.body.appendChild(newImg);
-	// Wait for it to load
-	while (!document.body.contains(newImg))
-	{
-		await new Promise(res => {
-			requestAnimationFrame(resolve)
-		});
-	}
-
+function transitionImages() {
 	// Find how long the transition takes
 	const transitionDuration = parseFloat(getComputedStyle(newImg)["transition-duration"]);
 
@@ -42,7 +28,19 @@ async function updateImg() {
 			document.body.removeChild(oldImg);
 		}
 	});
+}
 
+function updateImg() {
+	// Replace the current old image with a new invisible image
+	oldImg = newImg;
+	newImg = createImg();
+	newImg.addEventListener('load', transitionImages)
+	newImg.addEventListener('error', function() {
+		console.log("error loading image");
+	})
+
+	// Add the new image to the body
+	document.body.appendChild(newImg);
 }
 
 function startUpdating() {
