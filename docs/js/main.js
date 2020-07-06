@@ -1,7 +1,8 @@
 var counter = 1;
 var refreshRate = 60000; // 1 minute
 var url = "http://wwc.instacam.com/instacamimg/STNMN/STNMN_l.jpg";
-var imgContainer = document.getElementById("images");
+var imgContainerSelector = "#images";
+var imgContainer = null;
 var oldImg = null;
 var newImg = null;
 var imgUpdater = null;
@@ -69,6 +70,7 @@ function stopTime() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
+	imgContainer = document.querySelector(imgContainerSelector);
 	startTime();
 	updateImg();
 	startUpdating();
