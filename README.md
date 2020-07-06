@@ -5,6 +5,8 @@ A simple page to view the webcam atop Stone Mountain. The webcam updates about e
 ### TODO
 
 - [x] Add transition between updates
+- [x] Add clock
 - [ ] Add timeline box at bottom to see previous images
 - [ ] Add option to use cover or fill (black bars or completely fill the screen)
 - [ ] Check last modified time to only update image when the image has changed
+- [ ] Add option to change webcam url
