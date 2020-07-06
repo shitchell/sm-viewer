@@ -1,6 +1,7 @@
 var counter = 1;
 var refreshRate = 60000; // 1 minute
 var url = "http://wwc.instacam.com/instacamimg/STNMN/STNMN_l.jpg";
+var imgContainer = document.getElementById("images");
 var oldImg = null;
 var newImg = null;
 var imgUpdater = null;
@@ -26,7 +27,7 @@ function transitionImages() {
 		// Delete the old image
 		if (oldImg !== null)
 		{
-			document.body.removeChild(oldImg);
+			imgContainer.removeChild(oldImg);
 		}
 	});
 }
@@ -41,7 +42,7 @@ function updateImg() {
 	})
 
 	// Add the new image to the body
-	document.getElementById("images").appendChild(newImg);
+	imgContainer.appendChild(newImg);
 	console.log("updating image");
 }
 

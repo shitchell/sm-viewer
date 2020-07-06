@@ -50,7 +50,7 @@ img {
     color: white;
     z-index: 900001;
     font-family: sans-serif;
-    font-size: 2em;
+    font-size: 3em;
 }
 #clock .hour {
     font-weight: bold;
