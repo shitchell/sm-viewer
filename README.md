@@ -2,6 +2,8 @@
 
 A simple page to view the webcam atop Stone Mountain. The webcam updates about every 3 minutes; this page updates every minute to make sure it gets the most recent picture without adding too much load.
 
+https://shitchell.github.io/sm-viewer/
+
 ### TODO
 
 - [x] Add transition between updates
