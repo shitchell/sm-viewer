@@ -66,6 +66,12 @@ img {
     color: white;
     font-family: sans-serif;
     font-size: 2em;
+
+    /* Make text unselectable */
+    -webkit-user-select: none;       
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 #clock .hour {
     font-weight: bold;
