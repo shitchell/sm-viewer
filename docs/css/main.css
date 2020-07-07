@@ -28,6 +28,7 @@ img {
     transition-property: opacity;
 }
 
+/* We want to be able to scroll around the image on mobile */
 @media screen and (max-width: 768px) {
     #images {
         position: relative;
