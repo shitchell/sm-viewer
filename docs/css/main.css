@@ -12,6 +12,14 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    overflow: scroll;
+
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+#images::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
 }
 
 img {
@@ -26,18 +34,6 @@ img {
     -o-transition: all 1s 0s ease;
     transition: all 1s 0s ease;
     transition-property: opacity;
-}
-
-/* We want to be able to scroll around the image on mobile */
-@media screen and (max-width: 768px) {
-    #images {
-        position: relative;
-        overflow: scroll;
-    }
-
-    img {
-        object-fit: initial;
-    }
 }
 
 .visible {
