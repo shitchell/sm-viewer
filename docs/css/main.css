@@ -9,9 +9,6 @@ html, body {
 #images {
     width: 100vw;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: relative;
     overflow: scroll;
 
@@ -23,9 +20,6 @@ html, body {
 }
 
 #images img {
-    min-width: 100%;
-    min-height: 100%;
-    object-fit: cover;
     position: absolute;
     opacity: 0;
 
@@ -95,11 +89,4 @@ html, body {
 }
 #sunriset .minute {
     font-weight: lighter;
-}
-
-/* Make the banner larger on larger displays */
-@media screen and (min-width: 1536px) {
-    #banner {
-        font-size: 3.5em;
-    }
 }

@@ -46,6 +46,7 @@ function createImg() {
     // Generate a new image using the counter and a random number to prevent caching issues
     var img = document.createElement("img");
     img.src = url + "?" + counter + Math.random();
+    img.classList.add("fwoh");
     // Set the image's z-index to the counter so that it is above previous images
     img.style.zIndex = counter++;
     return img;
