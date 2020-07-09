@@ -22,7 +22,7 @@ html, body {
     display: none;  /* Safari and Chrome */
 }
 
-img {
+#images img {
     min-width: 100%;
     min-height: 100%;
     object-fit: cover;
@@ -36,7 +36,7 @@ img {
     transition-property: opacity;
 }
 
-.visible {
+#images img.visible {
     opacity: 1;
 }
 
@@ -52,12 +52,12 @@ img {
     }
 }
 
-#clock {
+#banner {
     position: fixed;
     bottom: 1em;
     left: 1em;
     z-index: 900001;
-    padding: 0.5em 0.8em;
+    padding: 0.5em;
 
     background-color: rgba(0, 0, 0, 0.3);
     color: white;
@@ -70,16 +70,36 @@ img {
     -ms-user-select: none;
     user-select: none;
 }
+#banner > * {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+#banner, #banner * {
+    display: flex;
+    align-items: center;
+}
 #clock .hour {
     font-weight: bold;
 }
-#clock .minute {
+#banner .minute {
+    margin-left: 0.1em;
     opacity: 0.7;
 }
 
-/* Make the clock larger on larger displays */
+#sunriset {
+    font-size: 0.8em;
+}
+#sunriset .icon {
+    height: 0.8em;
+    margin-right: 0.5em;
+}
+#sunriset .minute {
+    font-weight: lighter;
+}
+
+/* Make the banner larger on larger displays */
 @media screen and (min-width: 1536px) {
-    #clock {
+    #banner {
         font-size: 3.5em;
     }
 }

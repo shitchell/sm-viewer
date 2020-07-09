@@ -5,6 +5,12 @@
 
     <link rel="icon" href="http://cdn.shitchell.com/img/shitchell_cookie_transparent.png" type="image/png" />
 
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
+
+    <!-- suncalc -->
+    <script type="text/javascript" src="js/suncalc.js"></script>
+
     <!-- Scroll by dragging -->
     <script type="text/javascript" src="https://cdn.rawgit.com/asvd/dragscroll/master/dragscroll.js"></script>
 
@@ -26,9 +32,18 @@
 <body>
 
     <div id="images" class="dragscroll"></div>
-    <div id="clock">
-        <span class="hour"></span>
-        <span class="minute"></span>
+    <div id="banner">
+        <div id="clock">
+            <span class="hour"></span>
+            <span class="minute"></span>
+        </div>
+        <div id="sunriset">
+            <img class="icon" src="img/sunrise.png" />
+            <span class="time">
+                <span class="hour"></span>
+                <span class="minute"></span>
+            </span>
+        </div>
     </div>
 
 </body>

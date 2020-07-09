@@ -1,11 +1,46 @@
 var counter = 1;
 var refreshRate = 60000; // 1 minute
-var url = "http://wwc.instacam.com/instacamimg/STNMN/STNMN_l.jpg";
 var imgContainerSelector = "#images";
 var oldImg = null;
 var newImg = null;
-var imgUpdater = null;
-var timeUpdater = null;
+var intervals = {
+    images: null,
+    time: null,
+    sunriset: null
+};
+
+// Image location (to be moved to config)
+var url = "http://wwc.instacam.com/instacamimg/STNMN/STNMN_l.jpg";
+var latitude = 33.804796;
+var longitude = -84.148387;
+
+function updateSunriset() {
+    var times = SunCalc.getTimes(new Date(), latitude, longitude);
+    var now = new Date();
+    var hours = "";
+    var minutes = "";
+
+    // Determine which comes next: sunrise or sunset
+    if (now > times.sunset || now < times.sunrise) {
+        hours = times.sunrise.getHours();
+        minutes = times.sunrise.getMinutes();
+    } else {
+        hours = times.sunset.getHours();
+        minutes = times.sunset.getMinutes();
+    }
+
+    // Left pad the hour and minutes with '0' if <10
+    if (hours < 10) {
+        hours = '0' + hours;
+    }
+    if (minutes < 10) {
+        minutes = '0' + minutes;
+    }
+
+    // Set the sunrise/sunset fields
+    document.querySelector("#sunriset .time .hour").innerText = hours;
+    document.querySelector("#sunriset .time .minute").innerText = minutes;
+}
 
 function createImg() {
     // Generate a new image using the counter and a random number to prevent caching issues
@@ -51,17 +86,17 @@ function updateImg() {
 }
 
 function startUpdating() {
-    imgUpdater = setInterval(function() {
+    intervals.images = setInterval(function() {
         updateImg();
     }, refreshRate);
 }
 
 function stopUpdating () {
-    clearInterval(imgUpdater);
+    clearInterval(intervals.images);
 }
 
 function startTime() {
-    timeUpdater = setInterval(function() {
+    intervals.time = setInterval(function() {
         const time = new Date();
         // Left pad the hour and minutes with '0' if <10
         var hours = time.getHours();
@@ -78,7 +113,17 @@ function startTime() {
 }
 
 function stopTime() {
-    clearInterval(timeUpdater);
+    clearInterval(intervals.time);
+}
+
+function startSunriset() {
+    intervals.sunriset = setInterval(function() {
+        updateSunriset()
+    }, 1000);
+}
+
+function stopSunriset() {
+    clearInterval(intervals.sunriset);
 }
 
 function fullScreen() {
@@ -91,6 +136,7 @@ document.addEventListener("DOMContentLoaded", function() {
     startTime();
     updateImg();
     startUpdating();
+    startSunriset();
 
     // Fullscreen on clock tap (until we add settings)
     document.getElementById("clock").onclick = fullScreen;
