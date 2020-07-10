@@ -15,7 +15,7 @@ https://shitchell.github.io/sm-viewer/
 
 - [x] Add transition between updates
 - [x] Add clock
-- [ ] Add timeline box at bottom to see previous images
+- [ ] Add timeline box to see previous images
 - [ ] Check last modified time to only update image when the image has changed
 - [ ] Add option to change webcam url
 - [ ] Add sliders to adjust banner position
