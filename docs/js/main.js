@@ -9,7 +9,7 @@ var intervals = {
     sunriset: null
 };
 
-// Image location (to be moved to config)
+// Image location
 var url = "http://wwc.instacam.com/instacamimg/STNMN/STNMN_l.jpg";
 var latitude = 33.804796;
 var longitude = -84.148387;
