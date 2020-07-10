@@ -1,9 +1,10 @@
 /* Fit Height or Width */
+'use strict';
 
 var fwohSelector = "fwoh";
 
-function isElement(element) {
-    return element instanceof Element || element instanceof HTMLDocument;  
+function isElement(obj) {
+    return obj instanceof Element || obj instanceof HTMLDocument;  
 }
 
 function isIterable(obj) {
@@ -33,28 +34,29 @@ function resizeNode(node) {
     if (isElement(node)) {
         // Get node and parent dimensions
         let nodeRect = node.getBoundingClientRect();
-        let parentRect = node.parentNode.getBoundingClientRect();
+        const parentRect = node.parentNode.getBoundingClientRect();
         // Get node and parent aspect ratios
-        let nodeAspectRatio = nodeRect.width / nodeRect.height;
-        let parentAspectRatio = parentRect.width / parentRect.height;
+        const nodeAspectRatio = nodeRect.width / nodeRect.height;
+        const parentAspectRatio = parentRect.width / parentRect.height;
 
         if (parentAspectRatio > nodeAspectRatio) {
-            console.log("fwoh: Setting max width", node);
-            node.style.width = "100%";
-            node.style.height = "auto";
+            console.log("fwoh: Adjusting to parent width (" + parentRect.width + ")", node);
+            node.style.width = parentRect.width + "px";
+            node.style.height = (parentRect.width / nodeAspectRatio) + "px";
         } else {
-            console.log("fwoh: Setting max height", node);
-            node.style.height = "100%";
-            node.style.width = "auto";
+            console.log("fwoh: Adjusting to parent height (" + parentRect.height + ")", node);
+            node.style.height = parentRect.height + "px";
+            node.style.width = (parentRect.height * nodeAspectRatio) + "px";
         }
     }
 }
 
 function resizeNodes(nodeList) {
     var nodes = null;
+
     if (nodeList == null)
     {
-        nodes = document.getElementsByClassName(fwohSelector);
+        nodes = Array.from(document.getElementsByClassName(fwohSelector));
     } else if (isIterable(nodeList)) {
         nodes = nodeList;
     } else if (isElement(nodeList)) {
@@ -65,17 +67,20 @@ function resizeNodes(nodeList) {
 
     for (const node of nodes) {
         if (isElement(node)) {
-            if (node.complete) {
-                resizeNode(node);
-            } else {
+            if (node.complete === false) {
                 node.addEventListener("load", () => resizeNode(node));
+            } else {
+                resizeNode(node);
             }
         }
     }
 }
 
-// Resize nodes added to the DOM
 document.addEventListener("DOMContentLoaded", function() {
+    // Resize all initial nodes
+    resizeNodes();
+
+    // Resize future nodes
     var observer = new MutationObserver(function(mutations) {
         const newElements = getMutationElements(mutations);
         resizeNodes(newElements);
@@ -87,5 +92,6 @@ document.addEventListener("DOMContentLoaded", function() {
         subtree:true
     });
 });
+
 // Resize nodes whenever the screen changes size
 window.addEventListener('resize', () => resizeNodes());
