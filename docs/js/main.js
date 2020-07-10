@@ -10,7 +10,7 @@ var intervals = {
 };
 
 // Image location (to be moved to config)
-var url = "https://wwc.instacam.com/instacamimg/STNMN/STNMN_l.jpg";
+var url = "http://wwc.instacam.com/instacamimg/STNMN/STNMN_l.jpg";
 var latitude = 33.804796;
 var longitude = -84.148387;
 
