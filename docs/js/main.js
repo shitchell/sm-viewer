@@ -140,6 +140,6 @@ document.addEventListener("DOMContentLoaded", function() {
     startSunriset();
 
     // Fullscreen on clock tap (until we add settings)
-    document.getElementById("clock").onclick = fullScreen;
-    document.getElementById("clock").ontouchstart = fullScreen;
+    document.getElementById("banner").onclick = fullScreen;
+    document.getElementById("banner").ontouchstart = fullScreen;
 });
