@@ -96,17 +96,13 @@ html, body {
     }
 }
 
-/* Chromecast via AutoTask reports a browser height of 10000px, so... fixes */
-body.chromecast {
-    position: absolute;
-    top: 992px;
-}
+/* Chromecast via AutoTask displays stuff weird, so... fixes */
 body.chromecast, body.chromecast #images {
     width: 1280px;
     height: 720px;
 }
 body.chromecast #banner {
-    top: calc(1712px - 3em); /* top margin + screen height - banner size - 1em */
+    top: calc(720px - 3em); /* top margin + screen height - banner size - 1em */
     bottom: unset;
     background-color: rgba(0, 0, 0, 0.5);
 }
