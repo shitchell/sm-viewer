@@ -134,6 +134,10 @@ function fullScreen() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
+    // Fix for chromecast
+    if (window.navigator.userAgent.search("CrKey")) {
+        document.body.classList.add("chromecast");
+    }
     startTime();
     updateImg();
     startUpdating();
