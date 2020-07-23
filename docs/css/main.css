@@ -108,4 +108,5 @@ body.chromecast, body.chromecast #images {
 body.chromecast #banner {
     top: calc(1712px - 3em); /* top margin + screen height - banner size - 1em */
     bottom: unset;
+    background-color: rgba(0, 0, 0, 0.5);
 }
