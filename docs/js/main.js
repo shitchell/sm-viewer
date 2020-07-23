@@ -135,7 +135,7 @@ function fullScreen() {
 
 document.addEventListener("DOMContentLoaded", function() {
     // Fix for chromecast
-    if (window.navigator.userAgent.search("CrKey")) {
+    if (window.navigator.userAgent.includes("CrKey")) {
         document.body.classList.add("chromecast");
     }
     startTime();
