@@ -52,8 +52,8 @@ function createImg() {
     // On the first run, add an event listener to scroll the image left on load
     if (counter === 1) {
         img.addEventListener('load', function() {
-            i = document.getElementById("images");
-            i.scrollLeft = i.scrollLeftMax;
+            let div = document.getElementById("images");
+            div.scrollLeft = img.clientWidth - div.clientWidth;
         });
     }
     return img;
