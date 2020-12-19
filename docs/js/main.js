@@ -146,4 +146,8 @@ document.addEventListener("DOMContentLoaded", function() {
     // Fullscreen on clock tap (until we add settings)
     document.getElementById("banner").onclick = fullScreen;
     document.getElementById("banner").ontouchstart = fullScreen;
+
+    // Start by scrolling the image to the right
+    let i = document.getElementById("images");
+    i.scrollLeft = i.scrollLeftMax;
 });
