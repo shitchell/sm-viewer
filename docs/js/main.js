@@ -1,4 +1,4 @@
-var counter = 1;
+var counter = 0;
 var refreshRate = 60000; // 1 minute
 var imgContainerSelector = "#images";
 var oldImg = null;
@@ -49,6 +49,13 @@ function createImg() {
     img.classList.add("fwoh");
     // Set the image's z-index to the counter so that it is above previous images
     img.style.zIndex = counter++;
+    // On the first run, add an event listener to scroll the image left on load
+    if (counter === 1) {
+        img.addEventListener('load', function() {
+            i = document.getElementById("images");
+            i.scrollLeft = i.scrollLeftMax;
+        });
+    }
     return img;
 }
 
@@ -75,11 +82,11 @@ function updateImg() {
     oldImg = newImg;
     newImg = createImg();
     // On successful load, transition images
-    newImg.addEventListener('load', transitionImages)
+    newImg.addEventListener('load', transitionImages);
     // Log any failed attempts to load the image
     newImg.addEventListener('error', function() {
         console.log("error loading image");
-    })
+    });
 
     // Add the new image to the body
     document.querySelector(imgContainerSelector).appendChild(newImg);
@@ -146,8 +153,4 @@ document.addEventListener("DOMContentLoaded", function() {
     // Fullscreen on clock tap (until we add settings)
     document.getElementById("banner").onclick = fullScreen;
     document.getElementById("banner").ontouchstart = fullScreen;
-
-    // Start by scrolling the image to the right
-    let i = document.getElementById("images");
-    i.scrollLeft = i.scrollLeftMax;
 });
