@@ -25,7 +25,8 @@ var intervals = {
 };
 
 // Image location
-var imgUrl = "http://wwc.instacam.com/instacamimg/STNMN/STNMN_l.jpg";
+//var imgUrl = "http://wwc.instacam.com/instacamimg/STNMN/STNMN_l.jpg";
+var imgUrl = "https://shitchell.com/img/stnmn.jpg";
 var latitude = 33.804796;
 var longitude = -84.148387;
 
