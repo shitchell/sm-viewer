@@ -6,10 +6,11 @@ https://shitchell.github.io/sm-viewer/
 
 ### Features
 
-1. Automatically fits image to screen based on aspect ratio using [fwoh.js](https://github.com/shitchell/fwoh)
+1. Automatically fits image to screen based on aspect ratio without clipping (e.g. when you use `background-position: cover`) using [fwoh.js](https://github.com/shitchell/fwoh)
 2. Clock
-3. Upcoming sunrise or sunset time (whichever is next)
-4. Updates every ~3 minutes (refresh rate is 60 seconds, but the webcam itself updates randomly every 2-4 minutes)
+3. Weather
+4. Upcoming sunrise or sunset time (whichever is next)
+5. Updates every ~3 minutes (refresh rate is 60 seconds, but the webcam itself updates randomly every 2-4 minutes)
 
 ### TODO
 
